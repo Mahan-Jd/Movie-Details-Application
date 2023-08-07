@@ -6,7 +6,7 @@ const global = {
     type: '',
     page: 1,
     totalPages: 1,
-    totalResults:0
+    totalResults:0,
   },
   api: {
     apiKey:'65e9dae78c7f213d56648af2a05c5fb6',
@@ -14,7 +14,7 @@ const global = {
   }
 };
 
-// display 20 most popular movies
+// display 20 most popular movies.
 async function displayPopularMovies() {
     const { results } = await fetchAPIData('movie/popular')
  
@@ -49,7 +49,7 @@ async function displayPopularMovies() {
     });
 }
 
-// display 20 most popula tv shows
+// display 20 most popula tv shows.
 async function displayPopularShows() {
     const { results } = await fetchAPIData('tv/popular');
   
@@ -84,7 +84,7 @@ async function displayPopularShows() {
     });
 }
   
-// Display movie details
+// Display movie details.
 
 async function displayMovieDetails() {
   
@@ -148,7 +148,7 @@ async function displayMovieDetails() {
   document.querySelector('#movie-details').appendChild(div);
 
 }
-// Display show details
+// Display show details.
 
 async function displayShowDetails() {
   
@@ -212,7 +212,7 @@ async function displayShowDetails() {
 
 }
 
-// display backdrop  on details page
+// display backdrop  on details page.
 
 function displayBackgroundImage(type,backgroundPath) {
   const overlayDiv = document.createElement('div');
@@ -236,7 +236,7 @@ function displayBackgroundImage(type,backgroundPath) {
   }
 }
 
-// search movie/shows
+// search movie/shows.
 
 async function search() {
   const queryString = window.location.search;
@@ -268,7 +268,7 @@ async function search() {
 }
 
 function displaySearchResults(results) {
-  // clear previous results
+  // clear previous results.
   document.querySelector('#search-results').innerHTML = '';
   document.querySelector('#search-results-heading').innerHTML = '';
   document.querySelector('#pagination').innerHTML = '';
@@ -306,7 +306,7 @@ function displaySearchResults(results) {
   displayPagination();
 }
 
-// create and display pagination
+// create and display pagination.
 
 function displayPagination() {
   const div = document.createElement('div');
@@ -317,24 +317,24 @@ function displayPagination() {
 
   document.querySelector('#pagination').appendChild(div);
 
-  // disable prev button if on 1st page
+  // disable prev button if on 1st page.
   if (global.search.page === 1) {
     document.querySelector('#prev').disabled = true;
   }
 
-  // disable next button if on last page
+  // disable next button if on last page.
   if (global.search.page === global.search.totalPages) {
     document.querySelector('#next').disabled = true;
   }
 
-  // next page
+  // next page.
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
     const { results, total_pages } = await searchAPIData();
     displaySearchResults(results);
   });
 
-  // prev page
+  // prev page.
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
     const { results, total_pages } = await searchAPIData();
@@ -342,7 +342,7 @@ function displayPagination() {
   })
 }
 
-// display slider
+// display slider.
 
 async function displaySlider() {
   const { results } = await fetchAPIData('movie/now_playing');
@@ -390,7 +390,7 @@ function initSwiper() {
   })
 }
 
-// Fetch data from TMDb API
+// Fetch data from TMDb API.
 async function fetchAPIData(endPoint) {
     const API_KEY = global.api.apiKey;
     const API_URL = global.api.apiUrl;
@@ -407,7 +407,7 @@ async function fetchAPIData(endPoint) {
     return data;
 }
 
-// Make request to search
+// Make request to search.
 async function searchAPIData() {
   const API_KEY = global.api.apiKey;
   const API_URL = global.api.apiUrl;
@@ -433,7 +433,7 @@ function hideSpinner() {
     document.querySelector('.spinner').classList.remove('show');
 }
 
-// highlight active link
+// highlight active link.
 
 function highLightActiveLink() {
     
@@ -447,7 +447,7 @@ function highLightActiveLink() {
     })
 }
 
-// show alert
+// show alert.
 
 function showAlert(message, className = 'error') {
   const alertEl = document.createElement('div');
@@ -458,11 +458,11 @@ function showAlert(message, className = 'error') {
   setTimeout(() => alertEl.remove(), 3000);
 }
 
-// aaddding comas to budget and revenues of the movie
+// aaddding comas to budget and revenues of the movie.
 function addComasToNumber(number){
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
-// init app
+// init app.
 
 function init() {
     
